@@ -49,7 +49,18 @@
                     </div>
                 </div>
                 <div v-else>
-
+                    <div class="col-md-10 col-md-offset-1">
+                        <div class="panel panel-info">
+                            <div class="panel-heading">Pet Depot Checkout</div>
+                            <div class="panel-body">
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        <h4><strong>Enter Your Information</strong></h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </main>
@@ -81,7 +92,10 @@
             },
             showCheckout() {
                 this.showProduct = this.showProduct ? false : true;
-            }
+            },
+            // submitForm() {
+            //     console.log('Submitted');
+            // }
         },
         computed: {
             cartItemCount() {
