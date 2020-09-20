@@ -35,6 +35,8 @@
                     <p class="price">
                         {{ product.price | formatPrice }}
                     </p>
+                    <button class="btn btn-primary btn-lg" @click="addToCart">
+                        Add to cart</button>
                 </div>
             </div>
         </main>
@@ -54,6 +56,13 @@
                     "organic goodness for your cat.",
                 price: 2000,
                 image: "assets/images/product-fullsize.png"
+            },
+            cart: []
+        },
+
+        methods: {
+            addToCart() {
+                this.cart.push(this.product.id);
             }
         },
 
