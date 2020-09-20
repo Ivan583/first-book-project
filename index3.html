@@ -31,19 +31,25 @@
 
         <main>
             <div class="row product">
-                <div class="col-md-2 col-md-offset-1">
-                    <figure>
-                        <img v-bind:src="product.image">
-                    </figure>
+                <div v-if="showProduct">
+                    <div class="col-md-2 col-md-offset-1">
+                        <figure>
+                            <img v-bind:src="product.image">
+                        </figure>
+                    </div>
+                    <div class="col-md-6 col-md-offset-2 description">
+                        <h1 v-text="product.title"></h1>
+                        <p v-html="product.description"></p>
+                        <p class="price">
+                            {{ product.price | formatPrice }}
+                        </p>
+                        <button class="btn btn-primary btn-lg" @click="addToCart" v-if="canAddToCart">Add to
+                            cart</button>
+                        <button disabled="disabled" v-else>Add to cart</button>
+                    </div>
                 </div>
-                <div class="col-md-6 col-md-offset-2 description">
-                    <h1 v-text="product.title"></h1>
-                    <p v-html="product.description"></p>
-                    <p class="price">
-                        {{ product.price | formatPrice }}
-                    </p>
-                    <button class="btn btn-primary btn-lg" @click="addToCart" v-if="canAddToCart">Add to cart</button>
-                    <button disabled="disabled" v-else>Add to cart</button>
+                <div v-else>
+
                 </div>
             </div>
         </main>
