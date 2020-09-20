@@ -41,7 +41,8 @@
                     <p class="price">
                         {{ product.price | formatPrice }}
                     </p>
-                    <button class="btn btn-primary btn-lg" @click="addToCart" v-show="canAddToCart">Add to cart</button>
+                    <button class="btn btn-primary btn-lg" @click="addToCart" v-if="canAddToCart">Add to cart</button>
+                    <button disabled="disabled" v-else>Add to cart</button>
                 </div>
             </div>
         </main>
