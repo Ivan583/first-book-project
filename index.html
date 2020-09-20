@@ -110,8 +110,9 @@
 
                                     <div class="form-group">
                                         <div class="col-md-6 boxes">
-                                            <input type="checkbox" id="gift" value="true" v-model="order.gift">
-                                            <label for="gift">Ship As Gift?</label>
+                                            <input type="checkbox" id="gift" value="true" :true-value="order.sendGift"
+                                                :false-value="order.dontSendGift" v-model="order.gift">
+                                            <label for="checkbox">Ship As Gift?</label>
                                         </div>
                                     </div>
 
@@ -174,7 +175,9 @@
                 zip: '',
                 state: '',
                 method: 'Business',
-                gift: false
+                gift: 'Do Not Sand As A Gift',
+                sendGift: 'Sand As A Gift',
+                dontSendGift: 'Do Not Sand As A Gift'
             },
             product: {
                 id: 1001,
