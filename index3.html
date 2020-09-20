@@ -19,6 +19,12 @@
                 <div class="navbar-header">
                     <h1 v-text='sitename'></h1>
                 </div>
+                <div class="nav navbar-nav navbar-right cart">
+
+                    {{ cartItemCount }}
+                    <span class="glyphicon glyphicon-shopping-cart">
+                    </span>
+                </div>
             </div>
         </header>
 
@@ -63,6 +69,11 @@
         methods: {
             addToCart() {
                 this.cart.push(this.product.id);
+            }
+        },
+        computed: {
+            cartItemCount() {
+                return this.cart.length || '';
             }
         },
 
