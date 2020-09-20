@@ -53,15 +53,38 @@
                         <div class="panel panel-info">
                             <div class="panel-heading">Pet Depot Checkout</div>
                             <div class="panel-body">
+
                                 <div class="form-group">
                                     <div class="col-md-12">
                                         <h4><strong>Enter Your Information</strong></h4>
                                     </div>
+
+                                    <div class="form-group">
+                                        <div class="col-md-6">
+                                            <strong>First Name:</strong>
+                                            <input v-model="order.firstName" class="form-control">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <strong>Last Name:</strong>
+                                            <input v-model="order.lastName" class="form-control">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12 verify">
+                                        <pre>
+                                            First Name: {{order.firstName}}
+                                            Last Name: {{order.lastName}}
+                                        </pre>
+                                    </div>
+                                    <!-- end of global form-group -->
                                 </div>
                             </div>
+                            <!-- end of panel-info -->
                         </div>
                     </div>
+                    <!-- end of v-else -->
                 </div>
+
             </div>
         </main>
 
@@ -74,6 +97,10 @@
         data: {
             sitename: 'Vue.js Pet Depot',
             showProduct: true,
+            order: {
+                firstName: '',
+                lastName: ''
+            },
             product: {
                 id: 1001,
                 title: "Cat Food, 25lb bag",
