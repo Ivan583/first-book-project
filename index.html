@@ -108,6 +108,23 @@
                                         </div>
                                     </div>
 
+                                    <div class="form-group">
+                                        <div class="col-md-6 boxes">
+                                            <input type="checkbox" id="gift" value="true" v-model="order.gift">
+                                            <label for="gift">Ship As Gift?</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="col-md-6 boxes">
+                                            <input type="radio" id="business" value="Business" v-model="order.method">
+                                            <label for="business">Business</label>
+
+                                            <input type="radio" id="home" value="Home" v-model="order.method">
+                                            <label for="home">Home</label>
+                                        </div>
+                                    </div>
+
                                     <div class="col-md-12 verify">
                                         <pre>
                                             First Name: {{order.firstName}}
@@ -116,6 +133,9 @@
                                             City: {{order.city}}
                                             Zip: {{order.zip}}
                                             State: {{order.state}}
+                                            Method: {{order.method}}
+                                            Gift: {{order.gift}}
+
                                         </pre>
                                     </div>
                                     <!-- end of global form-group -->
@@ -145,7 +165,9 @@
                 address: '',
                 city: '',
                 zip: '',
-                state: ''
+                state: '',
+                method: 'Business',
+                gift: false
             },
             product: {
                 id: 1001,
