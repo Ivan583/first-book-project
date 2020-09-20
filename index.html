@@ -125,6 +125,13 @@
                                         </div>
                                     </div>
 
+                                    <div class="form-group">
+                                        <div class="col-md-6">
+                                            <button type="submit" class="btn btn-primary submit"
+                                                v-on:click="submitForm">Place Order</button>
+                                        </div>
+                                    </div>
+
                                     <div class="col-md-12 verify">
                                         <pre>
                                             First Name: {{order.firstName}}
@@ -188,9 +195,9 @@
             showCheckout() {
                 this.showProduct = this.showProduct ? false : true;
             },
-            // submitForm() {
-            //     console.log('Submitted');
-            // }
+            submitForm() {
+                console.log('Submitted');
+            }
         },
         computed: {
             cartItemCount() {
