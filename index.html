@@ -93,10 +93,7 @@
                                             <strong>State:</strong>
                                             <select v-model="order.state" class="form-control">
                                                 <option disabled value="">State</option>
-                                                <option>AL</option>
-                                                <option>AR</option>
-                                                <option>CA</option>
-                                                <option>NV</option>
+                                                <option v-for="(state, key) in states" :value="state">{{key}}</option>
                                             </select>
                                         </div>
                                     </div>
@@ -178,6 +175,12 @@
                 gift: 'Do Not Sand As A Gift',
                 sendGift: 'Sand As A Gift',
                 dontSendGift: 'Do Not Sand As A Gift'
+            },
+            states: {
+                AL: 'Alabama',
+                AR: 'Arisona',
+                CA: 'Calofornia',
+                NV: 'Nevada'
             },
             product: {
                 id: 1001,
