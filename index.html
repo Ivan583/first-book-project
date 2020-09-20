@@ -13,12 +13,19 @@
 </head>
 
 <body>
-    <div id="app"></div>
+    <div id="app">
+        <header>
+            <h1 v-text='sitename'></h1>
+        </header>
+    </div>
 
 </body>
 <script>
     let appl = new Vue({
-        el: '#app'
+        el: '#app',
+        data: {
+            sitename: 'Vue.js Pet Depot'
+        }
     })
 </script>
 
