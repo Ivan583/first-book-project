@@ -37,17 +37,21 @@
                             <img v-bind:src="product.image">
                         </figure>
                     </div>
+
                     <div class="col-md-6 col-md-offset-2 description">
                         <h1 v-text="product.title"></h1>
                         <p v-html="product.description"></p>
                         <p class="price">
                             {{ product.price | formatPrice }}
                         </p>
+
                         <button class="btn btn-primary btn-lg" @click="addToCart" v-if="canAddToCart">Add to
                             cart</button>
                         <button disabled="disabled" v-else>Add to cart</button>
+
                     </div>
                 </div>
+
                 <div v-else>
                     <div class="col-md-10 col-md-offset-1">
                         <div class="panel panel-info">
@@ -191,7 +195,7 @@
                     "organic goodness for your cat.",
                 price: 2000,
                 image: "assets/images/product-fullsize.png",
-                availabelInventory: 5
+                availabelInventory: 10
             },
             cart: []
         },
