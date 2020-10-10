@@ -9,6 +9,7 @@
     <link rel="stylesheet" type="text/css" href="assets/css/app.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
         crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.16.2/axios.js"></script>
     <title>Vue.js Pet Depot</title>
 </head>
 
@@ -256,7 +257,24 @@
                     return "$ " + price.toFixed(2);
                 }
             }
+        },
+
+        created: function () {
+            axios.get('./products.json')
+                .then((response) => {
+                    this.products = response.data.products;
+                    console.log(this.products);
+                });
         }
+
+        // mounted() {
+        //     fetch('./products.json')
+        //         .then(response => response.json())
+        //         .then(json => {
+        //             this.products = json
+        //         })
+        // }
+
     });
 </script>
 
