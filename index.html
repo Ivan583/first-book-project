@@ -44,22 +44,27 @@
                         <p class="price">
                             {{ product.price | formatPrice }}
                         </p>
+                        <div class="button">
+                            <button class="btn btn-primary btn-lg" @click="addToCart" v-if="canAddToCart">Add to
+                                cart</button>
+                            <button disabled="disabled" class="btn btn-danger btn-lg" v-else>Impossible</button>
 
-                        <button class="btn btn-primary btn-lg" @click="addToCart" v-if="canAddToCart">Add to
-                            cart</button>
-                        <button disabled="disabled" class="btn btn-danger btn-lg" v-else>Impossible</button>
+                            <div>
+                                <span class="inventory-message" v-if="product.availabelInventory - cartItemCount === 0">
+                                    All Out!
+                                </span>
+                                <span class="inventory-message"
+                                    v-else-if="product.availabelInventory - cartItemCount < 5">
+                                    Only {{ product.availabelInventory - cartItemCount }} left!
+                                </span>
+                                <span class="inventory-message" v-else>Buy Now!</span>
+                            </div>
 
-                        <span class="inventory-message" v-if="product.availabelInventory - cartItemCount === 0">
-                            All Out!
-                        </span>
-                        <span class="inventory-message" v-else-if="product.availabelInventory - cartItemCount < 5">
-                            Only {{ product.availabelInventory - cartItemCount }} left!
-                        </span>
-                        <span class="inventory-message" v-else>Buy Now!</span>
-
-                        <div class="rating">
-                            <span v-for="n in 5"> &#9734</span>
+                            <div class="rating">
+                                <span :class="{'rating-active': checkRating(n)}" v-for="n in 5"> &#9734</span>
+                            </div>
                         </div>
+
 
                     </div>
                 </div>
@@ -222,6 +227,9 @@
             },
             submitForm() {
                 console.log('Submitted');
+            },
+            checkRating(n) {
+                return this.product.rating - n >= 0;
             }
         },
         computed: {
