@@ -49,9 +49,13 @@
                             cart</button>
                         <button disabled="disabled" class="btn btn-danger btn-lg" v-else>Impossible</button>
 
-                        <span class="inventory-message" v-if="product.availabelInventory - cartItemCount < 5">
+                        <span class="inventory-message" v-if="product.availabelInventory - cartItemCount === 0">
+                            All Out!
+                        </span>
+                        <span class="inventory-message" v-else-if="product.availabelInventory - cartItemCount < 5">
                             Only {{ product.availabelInventory - cartItemCount }} left!
                         </span>
+                        <span class="inventory-message" v-else>Buy Now!</span>
 
                     </div>
                 </div>
