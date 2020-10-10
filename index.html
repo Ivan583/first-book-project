@@ -171,7 +171,7 @@
 </body>
 
 <script>
-    let appl = new Vue({
+    let app = new Vue({
         el: '#app',
         data: {
             sitename: 'Vue.js Pet Depot',
@@ -201,7 +201,7 @@
                 title: "Cat Food, 25lb bag",
                 description: "A 25 pound bag of <em>irresistible</em>," +
                     "organic goodness for your cat.",
-                price: 2000,
+                price: 20.00,
                 image: "assets/images/product-fullsize.png",
                 availabelInventory: 10
             },
@@ -217,6 +217,9 @@
             },
             submitForm() {
                 console.log('Submitted');
+            },
+            checkRating(n) {
+                return this.product.rating - n >= 0;
             }
         },
         computed: {
@@ -230,20 +233,17 @@
 
         filters: {
             formatPrice(price) {
-                if (!parseInt(price)) {
-                    return "";
-                }
-                if (price > 99999) {
-                    var priceString = (price / 100).toFixed(2);
+                if (price > 999.99) {
+                    var priceString = price.toFixed(2);
                     var priceArray = priceString.split("").reverse();
                     var index = 3;
                     while (priceArray.length > index + 3) {
-                        priceArray.splice(index + 3, 0, ",");
+                        priceArray.splice(index + 3, 0, " ");
                         index += 4;
                     }
-                    return "$" + priceArray.reverse().join("");
+                    return "$ " + priceArray.reverse().join("");
                 } else {
-                    return "$" + (price / 100).toFixed(2);
+                    return "$ " + price.toFixed(2);
                 }
             }
         }
