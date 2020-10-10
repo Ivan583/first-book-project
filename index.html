@@ -47,7 +47,11 @@
 
                         <button class="btn btn-primary btn-lg" @click="addToCart" v-if="canAddToCart">Add to
                             cart</button>
-                        <button disabled="disabled" v-else>Add to cart</button>
+                        <button disabled="disabled" class="btn btn-danger btn-lg" v-else>Impossible</button>
+
+                        <span class="inventory-message" v-if="product.availabelInventory - cartItemCount < 5">
+                            Only {{ product.availabelInventory - cartItemCount }} left!
+                        </span>
 
                     </div>
                 </div>
