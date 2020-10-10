@@ -33,7 +33,7 @@
 
             <main>
                 <div v-if="showProduct">
-                    <div v-for="product in products">
+                    <div v-for="product in sortedProducts">
                         <div class="row">
                             <div class="col-md-4 col-md-offset-1">
                                 <figure>
@@ -55,12 +55,12 @@
 
                                     <div>
                                         <span class="inventory-message"
-                                            v-if="product.availabelInventory - cartCount(product.id) === 0">
+                                            v-if="product.availableInventory - cartCount(product.id) === 0">
                                             All Out!
                                         </span>
                                         <span class="inventory-message"
-                                            v-else-if="product.availabelInventory - cartCount(product.id) < 5">
-                                            Only {{ product.availabelInventory - cartCount(product.id) }} left!
+                                            v-else-if="product.availableInventory - cartCount(product.id) < 5">
+                                            Only {{ product.availableInventory - cartCount(product.id) }} left!
                                         </span>
                                         <span class="inventory-message" v-else>Buy Now!</span>
                                     </div>
@@ -250,7 +250,7 @@
             },
 
             canAddToCart(aProduct) {
-                return aProduct.availabelInventory > this.cartCount(aProduct.id);
+                return aProduct.availableInventory > this.cartCount(aProduct.id);
             },
             cartCount(id) {
                 let count = 0;
@@ -265,6 +265,20 @@
         computed: {
             cartItemCount() {
                 return this.cart.length || '';
+            },
+            sortedProducts() {
+                if (this.products.length > 0) {
+                    let productArray = this.products.slice(0);
+
+                    function compare(a, b) {
+                        if (a.title.toLowerCase() < b.title.toLowerCase())
+                            return -1;
+                        if (a.title.toLowerCase() > b.title.toLowerCase())
+                            return 1;
+                        return 0;
+                    }
+                    return productArray.sort(compare);
+                }
             }
         },
 
