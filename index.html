@@ -47,7 +47,8 @@
                                 {{ product.price | formatPrice }}
                             </p>
                             <div class="button">
-                                <button class="btn btn-primary btn-lg" @click="addToCart" v-if="canAddToCart">Add to
+                                <button class="btn btn-primary btn-lg" @click="addToCart(product)"
+                                    v-if="canAddToCart(product)">Add to
                                     cart</button>
                                 <button disabled="disabled" class="btn btn-danger btn-lg" v-else>Impossible</button>
 
@@ -240,15 +241,24 @@
             },
             checkRating(n, myProduct) {
                 return myProduct.rating - n >= 0;
+            },
+            canAddToCart(aProduct) {
+                return aProduct.availabelInventory > this.cartCount(id);
+            },
+            cartCount(id) {
+                let count = 0;
+                for (let i = 0; i < this.cart.length; i++) {
+                    if (this.cart[i] === id) {
+                        count++;
+                    }
+                }
+                return count;
             }
         },
         computed: {
             cartItemCount() {
                 return this.cart.length || '';
-            },
-            canAddToCart() {
-                return this.product.availabelInventory > this.cartItemCount;
-            },
+            }
         },
 
         filters: {
