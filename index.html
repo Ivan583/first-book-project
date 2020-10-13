@@ -299,22 +299,13 @@
             }
         },
 
-        created: function () {
+        mounted() {
             axios.get('./products.json')
                 .then((response) => {
                     this.products = response.data.products;
                     console.log(this.products);
                 });
         }
-
-        // mounted() {
-        //     fetch('./products.json')
-        //         .then(response => response.json())
-        //         .then(json => {
-        //             this.products = json
-        //         })
-        // }
-
     });
 </script>
 
